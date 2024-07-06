@@ -1,9 +1,12 @@
 #[allow(unused_imports)]
 use std::io::{self, Write};
 
-use shell::{Command, Shell};
+use command::Command;
+use shell::Shell;
 
 mod shell;
+mod command;
+mod command_handler;
 
 fn main() {
     // Define the commands

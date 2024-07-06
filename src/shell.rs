@@ -1,7 +1,9 @@
 use std::{collections::HashMap, io::{self, Write}};
 
+use crate::{command::Command, command_handler::CommandHandler};
+
 pub struct Shell {
-    pub commands: HashMap<String, Handler>,
+    pub commands: HashMap<String, CommandHandler>,
     paths: Vec<String>,
 }
 
@@ -94,21 +96,4 @@ impl Shell {
         }
     }
 
-}
-
-type Handler = fn(&Vec<String>, &Shell);
-
-#[derive(Debug, Clone)]
-pub struct Command {
-    name: String,
-    handler: Handler,
-}
-
-impl Command {
-    pub fn new(name: &str, handler: Handler) -> Command {
-        Command {
-            name: name.to_string(),
-            handler,
-        }
-    }
 }
